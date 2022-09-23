@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to take screenshot of
+        a div using JavaScript and convert into base64 format?</title>
+    <style>
+        #wrapper{
+            height:80vh;
+            overflow: auto;
+        }
+        .owlcodersBlock{
+            display: flex;
+            flex-direction: column;
+            gap:5px;
+            margin: 5px 0;
+            font-family: monospace;
+            border: 5px solid dodgerblue;
+            padding: 5px;
+        }
+        .title{
+            font-size: 44px;
+            font-weight: 400;
+        }
+        .links{
+            font-size:24px;
+            color: lightblue;
+            font-weight: 400;
+        }
+        .description{
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="captureDiv">
+            <div class="owlcodersBlock">
+                <div class="title">Owlcoders</div>
+                <div class="links"><a href="https://owlcoders.com">Owlcoders.com</a></div>
+                <div class="description">Happy Coding :) </div>
+            </div>
+        
+        </div>
+        <button onClick=takescreenshot()>Capture Screenshot</button>
+        <div id="output"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js"></script>
+    <script>
+    function takescreenshot() {
+            let div =
+                document.getElementById('captureDiv');
+  
+            // Use the html2canvas
+            // function to take a screenshot
+            // and append it
+            // to the output div
+            html2canvas(div).then(
+                function (canvas) {
+                    document
+                    .getElementById('output')
+                    .appendChild(canvas);
+                    const base64Canvas = canvas.toDataURL();
+                    console.log("base64Canvas", base64Canvas);
+                })
+        }
+    </script>
+</body>
+</html>
